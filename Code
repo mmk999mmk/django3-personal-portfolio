@@ -1,0 +1,34 @@
+import csv
+
+with open("file.txt","a") as f:
+    f.seek(0)
+    f.write('''<import>\n''')
+with open("file.csv","r") as file:
+    csv_reader=csv.reader(file)
+    for each in csv_reader:
+        with open("file.txt","a") as f:
+            x='''<node action ="create" type ="document">\n<location>{0}</location>\n<title>{1}</title>\n<file>{2}</file>\n</node>\n'''.format(each[0],each[1],each[2])
+            f.write(x)
+with open("file.txt","a") as f:
+    f.seek(0)
+    f.write('''</import>''')
+---------------------------------------------
+file.csv: -- i/p
+-------------------------
+LL4C TEST:Livelink for Clinical:External eTMF:Celgene Science Park:RPC01-301:PSI:HTML_Index,000f1687-2624-4d31-aa86-d6032ac28015_0b00000b8053a5e6.html,000f1687-2624-4d31-aa86-d6032ac28015_0b00000b8053a5e6.html
+LL4C TEST:Livelink for Clinical:External eTMF:Celgene Science Park:RPC01-301:PSI:HTML_Index,00ae6bf3-565a-46cb-8e97-c082d23f2cbc_0b00000b8052f53d.html,00ae6bf3-565a-46cb-8e97-c082d23f2cbc_0b00000b8052f53d.html
+---------------------------------------------------------------------
+file.txt: -- o/p -- if you run the above code you will get o/p
+---------------------------------------------------------------------
+<import>
+<node action ="create" type ="document">
+<location>LL4C TEST:Livelink for Clinical:External eTMF:Celgene Science Park:RPC01-301:PSI:HTML_Index</location>
+<title>000f1687-2624-4d31-aa86-d6032ac28015_0b00000b8053a5e6.html</title>
+<file>000f1687-2624-4d31-aa86-d6032ac28015_0b00000b8053a5e6.html</file>
+</node>
+<node action ="create" type ="document">
+<location>LL4C TEST:Livelink for Clinical:External eTMF:Celgene Science Park:RPC01-301:PSI:HTML_Index</location>
+<title>00ae6bf3-565a-46cb-8e97-c082d23f2cbc_0b00000b8052f53d.html</title>
+<file>00ae6bf3-565a-46cb-8e97-c082d23f2cbc_0b00000b8052f53d.html</file>
+</node>
+</import>
